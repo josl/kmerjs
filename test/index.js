@@ -82,7 +82,8 @@ describe('kmerjs', function () {
             ]);
         let json = require('../test_data/db_short_results.json');
         let answer = findMatchesJSON(kmers, 1);
-        chai.assert.deepEqual(answer.templateentries, jsonToStrMap(json.templateentries));
+        chai.assert.deepEqual(
+            answer.templateentries, jsonToStrMap(json.templateentries));
         chai.assert.deepEqual(
             answer.templateentriestot, jsonToStrMap(json.templateentriestot)
         );
@@ -93,7 +94,8 @@ describe('kmerjs', function () {
         let kmerMap = jsonToStrMap(json);
         let answer = findMatchesJSON(kmerMap, 1);
         json = require('../test_data/db_long_results.json');
-        chai.assert.deepEqual(answer.templateentries, jsonToStrMap(json.templateentries));
+        chai.assert.deepEqual(
+            answer.templateentries, jsonToStrMap(json.templateentries));
         chai.assert.deepEqual(
             answer.templateentriestot, jsonToStrMap(json.templateentriestot)
         );
