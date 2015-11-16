@@ -15,10 +15,7 @@
       "1tbs"
     ],
     "consistent-return": 0,
-    "indent": [
-      2,
-      2
-    ],
+    "indent": 2,
     "no-multiple-empty-lines": [
       2,
       {

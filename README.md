@@ -1,26 +1,22 @@
 # kmerjs [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url] [![Coverage Status](https://coveralls.io/repos/josl/kmerjs/badge.svg?branch=master&service=github)](https://coveralls.io/github/josl/kmerjs?branch=master)
 > Finds kmers in a fastq file
 
-
 ## Install
 
 ```sh
 $ npm install --save kmerjs
 ```
 
-
 ## Usage
 
 ```js
-var kmerjs = require('kmerjs');
+import kmerjs from 'kmerjs';
 
-kmerjs('Rainbow');
+let kmerMap = kmerjs('test_data/test_short.fastq', 'ATGAC', 16, 1, 'output');
 ```
 
 ## License
-
 Apache-2.0 © [Jose Luis Bellod Cisneros](http://josl.github.io)
-
 
 [npm-image]: https://badge.fury.io/js/kmerjs.svg
 [npm-url]: https://npmjs.org/package/kmerjs
