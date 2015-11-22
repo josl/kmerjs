@@ -1,0 +1,18 @@
+#Template	Score	Expected	z	p_value	query coverage [%]	template coverage [%]	depth	total query coverage [%]	total template coverage [%]	total depth	Kmers in Template	Description
+NC_017625   	    2295	     108	   211.0	5.03e-23	   73.05	   47.02	0.36	   73.05	   47.02	0.36	    4881	Escherichia coli DH1
+NC_000913   	    2204	      81	   235.7	5.03e-23	   70.16	   45.70	0.33	   71.91	   46.84	0.36	    4823	Escherichia coli str. K-12 substr. MG1655
+NC_011353   	     335	      14	    85.8	5.03e-23	   10.66	    5.90	0.03	   68.28	   37.78	0.27	    5678	Escherichia coli O157:H7 str. EC4115
+NC_018650   	     211	       8	    71.1	5.03e-23	    6.72	    3.81	0.03	   70.79	   40.16	0.31	    5538	Escherichia coli O104:H4 str. 2009EL-2050
+NC_009801   	     123	       6	    48.5	5.03e-23	    3.92	    2.39	0.02	   70.67	   43.15	0.32	    5145	Escherichia coli E24377A
+NC_017660   	      57	       4	    25.7	5.03e-23	    1.81	    1.11	0.01	   71.43	   43.63	0.31	    5143	Escherichia coli KO11FL
+NC_011748   	      40	       4	    18.0	5.03e-23	    1.27	    0.75	0.01	   71.53	   42.04	0.32	    5345	Escherichia coli 55989
+NC_007941   	      38	       0	   125.7	5.03e-23	    1.21	   27.14	0.18	    1.43	   32.14	0.24	     140	Escherichia coli UTI89
+NC_011749   	      35	       0	   124.5	5.03e-23	    1.11	   26.32	0.21	    1.53	   36.09	0.66	     133	Escherichia coli UMN026
+NC_017632   	      32	       3	    16.5	5.03e-23	    1.02	    0.61	0.00	   51.89	   31.04	0.24	    5252	Escherichia coli UM146
+NC_013361   	      28	       3	    13.9	5.03e-23	    0.89	    0.49	0.00	   71.14	   39.04	0.28	    5725	Escherichia coli O26:H11 str. 11368
+NC_009837   	      20	       0	    62.0	5.03e-23	    0.64	    9.26	0.07	    1.75	   25.46	0.44	     216	Escherichia coli APEC O1
+NC_002655   	      20	       2	    10.4	5.03e-21	    0.64	    0.36	0.00	   67.55	   37.78	0.27	    5616	Escherichia coli O157:H7 str. EDL933
+NC_011740   	      18	       2	    10.6	5.03e-22	    0.57	    0.38	0.00	   23.65	   15.60	0.12	    4762	Escherichia fergusonii ATCC 35469
+NC_017644   	      14	       2	     7.6	5.03e-10	    0.45	    0.27	0.00	   52.62	   31.41	0.24	    5262	Escherichia coli NA114
+NC_010468   	      13	       2	     7.5	5.03e-10	    0.41	    0.26	0.00	   69.52	   43.50	0.33	    5021	Escherichia coli ATCC 8739
+NC_004741   	      10	       2	     6.0	5.03e-05	    0.32	    0.22	0.00	   59.78	   41.42	0.28	    4534	Shigella flexneri 2a str. 2457T
