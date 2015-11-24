@@ -10,6 +10,8 @@ var coveralls = require('gulp-coveralls');
 var babel = require('gulp-babel');
 var del = require('del');
 var isparta = require('isparta');
+var browserify = require('gulp-browserify');
+var babelify = require("babelify");
 
 // Initialize the babel transpiler so ES2015 files gets compiled
 // when they're loaded
@@ -74,5 +76,19 @@ gulp.task('clean', function () {
     return del('dist');
 });
 
-gulp.task('prepublish', ['nsp', 'babel']);
+// Browserify
+gulp.task('browser', function () {
+    // Single entry point to browserify
+    //  browserify dist/index.js  -o uploader/app/index.js -t [ babelify --presets [ es2015] ] -s kmerModule
+    //  browserify dist/stats.js -o uploader/app/stats.js -t [ babelify --presets [ es2015] ] -s statModule
+    return gulp.src('dist/**/*.js')
+        .pipe(browserify({ debug: true })
+              .transform(babelify)
+              .bundle()
+            //   .on('error', function (err) { console.log('Error: ' + err.message); })
+              .pipe(fs.createWriteStream('bundle.js')))
+        .pipe(gulp.dest('./browser'));
+});
+
+gulp.task('prepublish', ['nsp', 'babel', 'browserify']);
 gulp.task('default', ['static', 'test', 'coveralls']);

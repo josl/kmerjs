@@ -19,40 +19,35 @@ function jsonToStrMap(jsonStr) {
     return objToStrMap(jsonStr);
 }
 
-// describe('find kmers', function () {
-//     this.timeout(50000);
-//     it('Fastq line should contain ATGACGCAATACTCCT', function () {
-//         let kmerMap = new Map();
-//         let seq = `NTTTATGACGCAATACTCCTCTCTCCTTCGTGGTCTTGCAGCGGGTTCTGC
-//                    ATTTTTATTCCTTTTTGCCCCAACGGCATTCGCGGCGGAACAAACCGTTG`;
-//         let kmer = 'ATGACGCAATACTCCT';
-//         kmers(seq, kmerMap, 16, 'ATGAC', 1);
-//         let expected = new Map([[kmer, 1]]);
-//         kmerMap.should.deep.equal(expected);
-//     });
-// });
-//
-// describe('Reverse complement', function () {
-//     it('ATGACCTGAGAGCCTT should be AAGGCTCTCAGGTCAT', function () {
-//         let seq = 'ATGACCTGAGAGCCTT';
-//         let rev = 'AAGGCTCTCAGGTCAT';
-//         let comp = complement(seq);
-//         comp.should.equal(rev);
-//     });
-// });
+describe('find kmers', function () {
+    this.timeout(50000);
+    it('Fastq line should contain ATGACGCAATACTCCT', function () {
+        let kmerMap = new Map();
+        let seq = `NTTTATGACGCAATACTCCTCTCTCCTTCGTGGTCTTGCAGCGGGTTCTGC
+                   ATTTTTATTCCTTTTTGCCCCAACGGCATTCGCGGCGGAACAAACCGTTG`;
+        let kmer = 'ATGACGCAATACTCCT';
+        kmers(seq, kmerMap, 16, 'ATGAC', 1);
+        [...kmerMap][0][0].should.equal(kmer);
+    });
+});
+
+describe('Reverse complement', function () {
+    it('ATGACCTGAGAGCCTT should be AAGGCTCTCAGGTCAT', function () {
+        let seq = 'ATGACCTGAGAGCCTT';
+        let rev = 'AAGGCTCTCAGGTCAT';
+        let comp = complement(seq);
+        comp.should.equal(rev);
+    });
+});
 
 describe('kmerjs', function () {
     this.timeout(50000000);
     describe('small fastq', function () {
-        let kmerjs = new KmerJS(
-            './test_data/test_short.fastq',
-            'ATGAC', 16, 1, 1, '', 'mongo');
+        // let kmerjs = new KmerJS(
+        //     './test_data/test_short.fastq',
+        //     'ATGAC', 16, 1, 1, '', 'mongo');
+        let kmerjs = new KmerJS('./test_data/test_short.fastq');
         let answer = kmerjs.findKmers();
-
-
-
-
-
         // it('4 entries after stat (MongoDB)', function () {
         //     let json = require('../test_data/db_short_results.json');
         //     let expected = {
@@ -77,17 +72,14 @@ describe('kmerjs', function () {
         // });
 
 
+        it('short fastq should contain 2 kmers!', function () {
+            return answer.then(function (data) {
+                let expected = [['ATGACGCAATACTCCT', 1],
+                                ['ATGACCTGAGAGCCTT', 1]];
+                return [...data].should.deep.equal(expected);
+            });
 
-
-
-        // it('short fastq should contain 2 kmers!', function () {
-        //     let kmerMap = new Map(
-        //         [
-        //             ['ATGACGCAATACTCCT', 1],
-        //             ['ATGACCTGAGAGCCTT', 1]
-        //         ]);
-        //     return answer.should.eventually.deep.equal(kmerMap);
-        // });
+        });
         // it('158 hits found in short fastq (MongoDB)', function () {
         //     let json = require('../test_data/db_short_results.json');
         //     let expected = {
@@ -125,17 +117,18 @@ describe('kmerjs', function () {
         // });
     });
     describe('big fastq', function () {
-        let kmerjs = new KmerJS(
-            './test_data/test_long.fastq',
-            'ATGAC', 16, 1, 1, '', 'mongo');
-        let answer = kmerjs.findKmers();
-        it('kmer hit results', function () {
-            return answer.then(function (kmerMap) {
-                return kmerjs.findMatches(kmerMap);
-            }).should.eventually.have.length(179);
-            // return answer.then()
-            // return answer.should.eventually.deep.equal(kmerMap);
-        });
+        // let kmerjs = new KmerJS(
+        //     './test_data/test_long.fastq',
+        //     'ATGAC', 16, 1, 1, '', 'mongo');
+        // let answer = kmerjs.findKmers();
+        //
+        // it('kmer hit results', function () {
+        //     return answer.then(function (kmerMap) {
+        //         return kmerjs.findMatches(kmerMap);
+        //     }).should.eventually.have.length(179);
+        //     // return answer.then()
+        //     // return answer.should.eventually.deep.equal(kmerMap);
+        // });
 
     //
     //     it('long fastq should contain 3766 kmers!', function () {

@@ -1,5 +1,7 @@
 node_modules
 coverage
 dist
+browser
 test_data/db.json
 test_data/mongoDB.json
+uploader
