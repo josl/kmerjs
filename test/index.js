@@ -1,5 +1,5 @@
 import {
-    KmerJS, complement, kmers
+    KmerJSServer, complement, kmers
 } from '../lib/index';
 import chai from 'chai';
 import chaiAsPromised from 'chai-as-promised';
@@ -46,7 +46,7 @@ describe('kmerjs', function () {
         // let kmerjs = new KmerJS(
         //     './test_data/test_short.fastq',
         //     'ATGAC', 16, 1, 1, '', 'mongo');
-        let kmerjs = new KmerJS('./test_data/test_short.fastq');
+        let kmerjs = new KmerJSServer('./test_data/test_short.fastq');
         let answer = kmerjs.findKmers();
         // it('4 entries after stat (MongoDB)', function () {
         //     let json = require('../test_data/db_short_results.json');

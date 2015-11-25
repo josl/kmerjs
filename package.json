@@ -63,6 +63,7 @@
     "cli": "^0.11.1",
     "envify": "^3.4.0",
     "filereader-stream": "^1.0.0",
+    "from2": "^2.1.0",
     "kerberos": "0.0.17",
     "lodash": "^3.10.1",
     "mongodb": "^2.0.48",
@@ -72,6 +73,7 @@
     "node-gyp": "^3.0.3",
     "readline-browserify": "0.0.4",
     "readline2": "^1.0.1",
+    "request": "^2.67.0",
     "resolve": "^1.1.6"
   }
 }
