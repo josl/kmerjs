@@ -46,7 +46,9 @@ describe('kmerjs', function () {
         // let kmerjs = new KmerJS(
         //     './test_data/test_short.fastq',
         //     'ATGAC', 16, 1, 1, '', 'mongo');
-        let kmerjs = new KmerJSServer('./test_data/test_short.fastq');
+        // let kmerjs = new KmerJSServer('./test_data/test_short.fastq');
+        let kmerjs = new KmerJSServer('/Users/cisneror/Volumes/homedata1/services/ringtrials/ringtrials-1.0/IO/3_25_11_2015_121348_371577/uploads/1/DTU2015-732-PRJ1031-Salmonella-X-GMI15-001-DNA_S7_L001_R1_001.fastq');
+        // let kmerjs = new KmerJSServer('/Users/cisneror/Desktop/VTEC26_BC3_SN1-75.fna');
         let answer = kmerjs.findKmers();
         // it('4 entries after stat (MongoDB)', function () {
         //     let json = require('../test_data/db_short_results.json');
@@ -116,6 +118,13 @@ describe('kmerjs', function () {
         //     });
         // });
     });
+    // describe('humongous fastq', function () {
+    //     // let kmerjs = new KmerJS(
+    //     //     './test_data/test_short.fastq',
+    //     //     'ATGAC', 16, 1, 1, '', 'mongo');
+    //     let kmerjs = new KmerJSServer('~/Volumes/homedata1/services/ringtrials/ringtrials-1.0/IO/3_25_11_2015_121348_371577/uploads/1');
+    //     let answer = kmerjs.findKmers();
+    // });
     describe('big fastq', function () {
         // let kmerjs = new KmerJS(
         //     './test_data/test_long.fastq',

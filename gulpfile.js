@@ -12,6 +12,7 @@ var del = require('del');
 var isparta = require('isparta');
 var browserify = require('gulp-browserify');
 var babelify = require("babelify");
+var fs = require('fs');
 
 // Initialize the babel transpiler so ES2015 files gets compiled
 // when they're loaded
