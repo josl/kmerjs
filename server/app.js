@@ -1,5 +1,6 @@
 var express = require('express');
-var kmerModule = require('../dist/index.js');
+var kmerFinderModule = require('../dist/kmerFinderServer.js');
+var kmerJS = require('../dist/kmers.js');
 var Console = require('console');
 var bodyParser = require('body-parser');
 var app = express();
@@ -28,8 +29,9 @@ app.post('/kmers', textParser, function (req, res) {
         kmers += chunk.toString();
     })
     .on('end', function () {
-        var kmerjs = new kmerModule.KmerJSServer('');
-        kmerjs.findMatches(kmerjs.stringToMap(kmers)).then(function (matches) {
+        console.log(kmerJS);
+        var kmerFinder = new kmerFinderModule.KmerFinderServer('');
+        kmerFinder.findMatches(kmerJS.stringToMap(kmers)).then(function (matches) {
             var jsonMatches = [];
             matches.forEach(function (match) {
                 jsonMatches.push({
