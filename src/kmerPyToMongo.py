@@ -5,15 +5,17 @@ from collections import defaultdict
 import io
 import json
 import subprocess
+import sys
 
-templates = pickle.load(
-    open('/Users/cisneror/Documents/Programming/genomic-git/kmerfinder/kmer-env/kmerdb-bitbucket/database/complete_genomes.ATGAC.p', 'r'))
-templates_lenghts = pickle.load(
-    open('/Users/cisneror/Documents/Programming/genomic-git/kmerfinder/kmer-env/kmerdb-bitbucket/database/complete_genomes.ATGAC.len.p', 'r'))
-templates_ulengths = pickle.load(
-    open('/Users/cisneror/Documents/Programming/genomic-git/kmerfinder/kmer-env/kmerdb-bitbucket/database/complete_genomes.ATGAC.ulen.p', 'r'))
-templates_descriptions = pickle.load(
-    open('/Users/cisneror/Documents/Programming/genomic-git/kmerfinder/kmer-env/kmerdb-bitbucket/database/complete_genomes.ATGAC.desc.p', 'r'))
+# python2.7 kmerPyToMongo.py /Users/cisneror/code/genomic-git/kmerfinder/kmer-env/kmerdb-bitbucket/database/complete_genomes.ATGAC.p \
+# /Users/cisneror/code/genomic-git/kmerfinder/kmer-env/kmerdb-bitbucket/database/complete_genomes.ATGAC.len.p \
+# /Users/cisneror/code/genomic-git/kmerfinder/kmer-env/kmerdb-bitbucket/database/complete_genomes.ATGAC.ulen.p \
+# /Users/cisneror/code/genomic-git/kmerfinder/kmer-env/kmerdb-bitbucket/database/complete_genomes.ATGAC.desc.p
+
+templates = pickle.load(open(sys.argv[1], 'r'))
+templates_lenghts = pickle.load(open(sys.argv[2], 'r'))
+templates_ulengths = pickle.load(open(sys.argv[3], 'r'))
+templates_descriptions = pickle.load(open(sys.argv[4], 'r'))
 
 
 total_dna = defaultdict(list)
@@ -38,12 +40,12 @@ for template in total:
     entry['reads'] = total[template][3]
     entry['sequence'] = template
     database.append(entry)
-with io.open('test_data/my_db_seq_2.json', 'w', encoding='utf-8') as f:
+with io.open('../test_data/myDB4.json', 'w', encoding='utf-8') as f:
     f.write(unicode(json.dumps(database, ensure_ascii=False)))
 
 # System call
-# mongoimport -d Kmers -c complete_genomes_2 --jsonArray < test_data/my_db_seq_2.json
-retcode = subprocess.call([
-    'mongoimport', '-d', 'Kmers', '-c', 'complete_genomes_2', '--jsonArray',
-    '<', 'test_data/my_db_seq_2.json'
-])
+# mongoimport -d Kmers -c complete_genomes_3 --jsonArray < test_data/my_db_seq_2.json
+# retcode = subprocess.call([
+#     'mongoimport', '-d', 'Kmers', '-c', 'complete_genomes_2', '--jsonArray',
+#     '<', 'test_data/my_db_seq_2.json'
+# ])
