@@ -89,10 +89,20 @@ chai.should();
 //
 describe('kmerFinderServer findMatches', function () {
     this.timeout(500000000);
+    // fastq,
+    // preffix = 'ATGAC',
+    // length = 16,
+    // step = 1,
+    // coverage = 1,
+    // progress = true,
+    // db = 'mongo',
+    // url='mongodb:\/\/localhost:27017/Kmers',
+    // collection='genomes',
+    // method = 'standard'
     let kmers = new KmerFinderServer(
         '/Users/cisneror/Dropbox/PhD/CGE/ringtrials/4_20_6_2012_1430_975_193318_contigs.fsa',
-        'ATGAC', 16, 1, 1, 'test', 'mongo', 'mongodb://localhost:27017/Kmers',
-        'complete_genomes_2'
+        'ATGAC', 16, 1, 1, true, 'mongo', 'mongodb://localhost:27017/Kmers',
+        'complete_genomes_4', 'standard'
     );
     let answer = kmers.findKmers();
     it('4_20_6_2012_1430_975_193318_contigs should match NC_008463 (Pseudomonas aeruginosa UCBPP-PA14)', function () {

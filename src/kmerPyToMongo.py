@@ -7,7 +7,7 @@ import json
 import subprocess
 import sys
 
-# python kmerPyToMongo.py /Users/cisneror/code/genomic-git/kmerfinder/kmer-env/kmerdb-bitbucket/database/complete_genomes.ATGAC.p \
+# python2.7 kmerPyToMongo.py /Users/cisneror/code/genomic-git/kmerfinder/kmer-env/kmerdb-bitbucket/database/complete_genomes.ATGAC.p \
 # /Users/cisneror/code/genomic-git/kmerfinder/kmer-env/kmerdb-bitbucket/database/complete_genomes.ATGAC.len.p \
 # /Users/cisneror/code/genomic-git/kmerfinder/kmer-env/kmerdb-bitbucket/database/complete_genomes.ATGAC.ulen.p \
 # /Users/cisneror/code/genomic-git/kmerfinder/kmer-env/kmerdb-bitbucket/database/complete_genomes.ATGAC.desc.p
@@ -40,11 +40,11 @@ for template in total:
     entry['reads'] = total[template][3]
     entry['sequence'] = template
     database.append(entry)
-with io.open('../test_data/myDB.json', 'w', encoding='utf-8') as f:
+with io.open('../test_data/myDB4.json', 'w', encoding='utf-8') as f:
     f.write(unicode(json.dumps(database, ensure_ascii=False)))
 
 # System call
-# mongoimport -d Kmers -c complete_genomes_2 --jsonArray < test_data/my_db_seq_2.json
+# mongoimport -d Kmers -c complete_genomes_3 --jsonArray < test_data/my_db_seq_2.json
 # retcode = subprocess.call([
 #     'mongoimport', '-d', 'Kmers', '-c', 'complete_genomes_2', '--jsonArray',
 #     '<', 'test_data/my_db_seq_2.json'

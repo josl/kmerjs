@@ -5,9 +5,10 @@ browser
 test_data/db.json
 test_data/mongoDB.json
 test_data/GMI15-006-DNA_S6_L001_R1_001.fastq
-test_data/myDB.json
+test_data/myDB*.json
 test_data/out.json
 test_data/sumary.json
 test_data/index.js
 test/index.js
 uploader
+build
