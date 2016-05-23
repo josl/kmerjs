@@ -44,15 +44,15 @@ gulp.task('pre-test', function () {
 gulp.task('test', ['pre-test'], function (cb) {
     var mochaErr;
 
-    gulp.src('test/**/kmerFinderServer.js')
-        .pipe(plumber())
+    gulp.src('test/**/*.js')
+        // .pipe(plumber())
         .pipe(mocha({
             reporter: 'spec'
         }))
         .on('error', function (err) {
             mochaErr = err;
         })
-        .pipe(istanbul.writeReports())
+        // // .pipe(istanbul.writeReports())
         .on('end', function () {
             cb(mochaErr);
         });
@@ -80,15 +80,11 @@ gulp.task('clean', function () {
 // Browserify
 gulp.task('browser', function () {
     // Single entry point to browserify
-    //  browserify dist/index.js  -o uploader/app/index.js -t [ babelify --presets [ es2015] ] -s kmerModule
-    //  browserify dist/stats.js -o uploader/app/stats.js -t [ babelify --presets [ es2015] ] -s statModule
-    //
-    //  browserify dist/kmerFinderClient.js -o uploader/app/kmerFinderClient.js -t [ babelify --presets [ es2015] ] -s kmerModule
-    //  browserify dist/kmers.js -o uploader/app/kmers.js -t [ babelify --presets [ es2015] ] -s kmerModule
-    //
-    //
-    //  browserify dist/kmerFinderClient.js  -o ../kmerjsDocker/frontend/app/scripts/kmerFinderClient.js -t [ babelify --presets [ es2015] ] -s kmerModule
-    //  browserify dist/kmers.js  -o ../kmerjsDocker/frontend/app/scripts/kmers.js -t [ babelify --presets [ es2015] ] -s kmerModule
+    // Client
+    // gulp babel ; browserify dist/kmers.js  -o ../kmerjsDocker/frontend/app/scripts/kmers.js -t [ babelify --presets [ es2015] ] -s kmerModule ; browserify dist/kmerFinderClient.js  -o ../kmerjsDocker/frontend/app/scripts/kmerFinderClient.js -t [ babelify --presets [ es2015] ] -s kmerModule
+    // Server
+    // gulp babel ; browserify dist/kmers.js  -o ../kmerjsDocker/backend/kmerjs/kmers.js -t [ babelify --presets [ es2015] ] -s kmerModule ; browserify dist/kmerFinderServer.js  -o ../kmerjsDocker/backend/kmerjs/kmerFinderServer.js -t [ babelify --presets [ es2015] ] -s kmerModule
+
     return gulp.src('dist/**/*.js')
         .pipe(browserify({ debug: true })
               .transform(babelify)
