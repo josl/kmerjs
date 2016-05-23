@@ -1,14 +1,14 @@
-// import {
-//     KmerJS,
-//     complement
-// } from '../lib/kmers';
-// import chai from 'chai';
-// import chaiAsPromised from 'chai-as-promised';
+import {
+    KmerJS,
+    complement
+} from '../lib/kmers';
+import chai from 'chai';
+import chaiAsPromised from 'chai-as-promised';
+
+chai.use(chaiAsPromised);
+chai.should();
 //
-// chai.use(chaiAsPromised);
-// chai.should();
-//
-// describe('kmerjs', function () {
+describe('kmerjs', function () {
 //     it('ATGACGCAATACTCCT in kmersInLine()', function () {
 //         let kmers = new KmerJS();
 //         let seq = `NTTTATGACGCAATACTCCTCTCTCCTTCGTGGTCTTGCAGCGGGTTCTGC
@@ -34,14 +34,14 @@
 //         });
 //     });
 //
-//     it('readFile(test_long.fastq) should have 6045 kmers', function () {
-//         this.timeout(500000000);
-//         let file = './test_data/test_long.fastq';
-//         let kmers = new KmerJS(file);
-//         return kmers.readFile().then(function (kmers) {
-//             return kmers.size.should.equal(6045);
-//         });
-//     });
+    it('readFile(test_long.fastq) should have 6045 kmers', function () {
+        this.timeout(500000000);
+        let file = './test_data/test_long.fastq';
+        let kmers = new KmerJS(file);
+        return kmers.readFile().then(function (kmers) {
+            return kmers.size.should.equal(6045);
+        });
+    });
 //
 //     it('readFile(4_20_6_2012_1430_975_193318_contigs.fsa) should have 7196 kmers', function () {
 //         this.timeout(500000000);
@@ -51,4 +51,4 @@
 //             return kmers.size.should.equal(7196);
 //         });
 //     });
-// });
+});

@@ -18,24 +18,28 @@ describe('kmerFinderServer findMatches test', function () {
     this.timeout(500000000);
     it('findKmers(test_short.fastq) = 2 kmers!', function () {
         let kmerObj = new KmerFinderServer(
-            './test_data/test_short.fastq',
+            './test_data/test_long.fastq',
             'ATGAC', 16, 1, 1, '', 'mongo', 'mongodb://localhost:27017/Kmers',
             'complete_genomes_4', 'standard'
         );
+        let kmerQuery = jsonToStrMap(kmer_json);
+        kmerObj.uKmers = kmerQuery.size;
+        kmerObj.uKmers= 8596965
         return kmerObj.findMatchesTest(jsonToStrMap(kmer_json)).then(function (matches) {
+            console.log(kmerObj.uKmers);
             kmerObj.close();
-            let match = matches[0];
-            console.log(match);
-            return match.get('template').should.equal('NC_017625') &&
-                   match.get('score').should.equal(2295) &&
-                   match.get('expected').should.equal(108) &&
-                   match.get('z').should.equal(211.00) &&
-                   match.get('probability').should.equal(5.03e-23) &&
-                   match.get('frac-q').should.equal(0.05) &&
-                   match.get('frac-d').should.equal(47.02) &&
-                   match.get('coverage').should.equal(0.36) &&
-                   match.get('ulength').should.equal(4881) &&
-                   match.get('species').should.equal('Escherichia coli DH1');
+            let bestMatch = matches[0];
+            console.log(bestMatch);
+            return bestMatch.get('template').should.equal('NC_017625') &&
+                   bestMatch.get('score').should.equal(2295) &&
+                   bestMatch.get('expected').should.equal(108) &&
+                   bestMatch.get('z').should.equal(211.00) &&
+                   bestMatch.get('probability').should.equal(5.03e-23) &&
+                   bestMatch.get('frac-q').should.equal(0.05) &&
+                   bestMatch.get('frac-d').should.equal(47.02) &&
+                   bestMatch.get('coverage').should.equal(0.36) &&
+                   bestMatch.get('ulength').should.equal(4881) &&
+                   bestMatch.get('species').should.equal('Escherichia coli DH1');
         })
         .catch(function(){
             return false;
