@@ -1,6 +1,6 @@
 {
   "name": "kmerjs",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Finds kmers in a fastq file",
   "homepage": "https://github.com/josl/kmerjs",
   "author": {
