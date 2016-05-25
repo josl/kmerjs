@@ -1,0 +1,83 @@
+{
+  "name": "kmerjs",
+  "version": "0.1.0",
+  "description": "Finds kmers in a fastq file",
+  "homepage": "https://github.com/josl/kmerjs",
+  "author": {
+    "name": "Jose Luis Bellod Cisneros",
+    "email": "bellod.cisneros@gmail.com",
+    "url": "http://josl.github.io"
+  },
+  "files": [
+    "dist"
+  ],
+  "main": "dist/index.js",
+  "keywords": [
+    "kmer",
+    "kmers",
+    "fastq",
+    "species",
+    "taxonomy",
+    "javascript",
+    "nodejs"
+  ],
+  "repository": "josl/kmerjs",
+  "devDependencies": {
+    "babel-core": "^5.5.0",
+    "babel-preset-es2015": "^6.1.18",
+    "babelify": "^7.2.0",
+    "chai": "^3.4.0",
+    "chai-as-promised": "^5.1.0",
+    "cli": "^0.11.1",
+    "coveralls": "^2.11.4",
+    "del": "^2.0.2",
+    "gulp": "^3.6.0",
+    "gulp-babel": "^5.3.0",
+    "gulp-browserify": "^0.5.1",
+    "gulp-coveralls": "^0.1.0",
+    "gulp-eslint": "^1.0.0",
+    "gulp-exclude-gitignore": "^1.0.0",
+    "gulp-istanbul": "^0.9.0",
+    "gulp-mocha": "^2.0.0",
+    "gulp-nsp": "^2.1.0",
+    "gulp-plumber": "^1.0.0",
+    "isparta": "^3.0.3",
+    "jshint": "^2.8.0",
+    "look": "^0.1.3",
+    "moment": "^2.10.6",
+    "node-inspector": "^0.12.3"
+  },
+  "scripts": {
+    "prepublish": "gulp prepublish",
+    "test": "gulp"
+  },
+  "license": "Apache-2.0",
+  "dependencies": {
+    "babel-polyfill": "^6.2.0",
+    "babel-preset-es2015": "^6.1.18",
+    "bignumber.js": "^2.1.0",
+    "brfs": "^1.4.1",
+    "browser-builtins": "^3.3.1",
+    "browserify-fs": "^1.0.0",
+    "bson": "^0.4.19",
+    "chai-json-equal": "0.0.1",
+    "cli": "^0.11.1",
+    "envify": "^3.4.0",
+    "filereader-stream": "^1.0.0",
+    "from2": "^2.1.0",
+    "gulp-nsp": "^2.3.0",
+    "kerberos": "0.0.17",
+    "line-reader": "^0.3.0",
+    "linebyline": "^1.3.0",
+    "lodash": "^3.10.1",
+    "mongodb": "^2.0.48",
+    "mongodb-core": "^1.2.21",
+    "mongodb-es6": "^1.0.0",
+    "mongoose": "^4.2.5",
+    "node-gyp": "^3.0.3",
+    "readline-browserify": "0.0.4",
+    "readline2": "^1.0.1",
+    "request": "^2.67.0",
+    "resolve": "^1.1.6"
+  }
+}
