@@ -44,7 +44,7 @@ gulp.task('pre-test', function () {
 gulp.task('test', ['pre-test'], function (cb) {
     var mochaErr;
 
-    gulp.src('test/**/kmers.js')
+    gulp.src('test/**/kmerFinderServer.js')
         // .pipe(plumber())
         .pipe(mocha({
             reporter: 'spec'
