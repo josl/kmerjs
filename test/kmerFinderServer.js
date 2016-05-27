@@ -14,49 +14,12 @@ chai.use(chaiJsonEqual);
 chai.use(chaiAsPromised);
 chai.should();
 
-describe('kmerFinderServer findMatches test_short', function () {
-    this.timeout(500000000);
-
-    it('Winner takes All match NC_017625 (Escherichia coli DH1)', function () {
-        let kmerObj = new KmerFinderServer(
-            './test_data/test_short.fastq',
-            'ATGAC', 16, 1, 1, true, 'mongo', 'mongodb://localhost:27017/Kmers',
-            'complete_genomes_4', 'winner'
-        );
-        // let json = require('.././test_data/db_short_results.json');
-        return kmerObj.findKmers().then(function (kmers) {
-            return kmerObj.findMatches(kmers)
-                .then(function (matches) {
-                    kmerObj.close();
-                    let bestMatch = matches[0];
-                    return bestMatch.get('template').should.equal('NC_017625') &&
-                           bestMatch.get('score').should.equal(2295) &&
-                           bestMatch.get('expected').should.equal(108) &&
-                           bestMatch.get('z').should.equal(211.00) &&
-                           bestMatch.get('probability').should.equal(5.03e-23) &&
-                           bestMatch.get('frac-q').should.equal(74.14) &&
-                           bestMatch.get('frac-d').should.equal(47.02) &&
-                           bestMatch.get('depth').should.equal(0.36) &&
-                           bestMatch.get('total-frac-q').should.equal(74.14) &&
-                           bestMatch.get('total-frac-d').should.equal(47.02) &&
-                           bestMatch.get('total-temp-cover').should.equal(0.36) &&
-                           bestMatch.get('kmers-template').should.equal(4881) &&
-                           bestMatch.get('species').should.equal('Escherichia coli DH1');
-                })
-                .catch(function(error) {
-                    console.log(error);
-                    return false;
-                });
-        });
-    });
-});
-
-// describe('kmerFinderServer findMatches test_long', function () {
+// describe('kmerFinderServer findMatches test_short', function () {
 //     this.timeout(500000000);
 //
 //     it('Winner takes All match NC_017625 (Escherichia coli DH1)', function () {
 //         let kmerObj = new KmerFinderServer(
-//             './test_data/test_long.fastq',
+//             './test_data/test_short.fastq',
 //             'ATGAC', 16, 1, 1, true, 'mongo', 'mongodb://localhost:27017/Kmers',
 //             'complete_genomes_4', 'winner'
 //         );
@@ -86,38 +49,110 @@ describe('kmerFinderServer findMatches test_short', function () {
 //                 });
 //         });
 //     });
-//     it('Standard should match NC_017625 (Escherichia coli DH1)', function () {
-//         let kmerObj = new KmerFinderServer(
-//             './test_data/test_long.fastq',
-//             'ATGAC', 16, 1, 1, true, 'mongo', 'mongodb://localhost:27017/Kmers',
-//             'complete_genomes_4', 'standard'
-//         );
-//         return kmerObj.findKmers().then(function (kmers) {
-//             return kmerObj.findMatches(kmers)
-//                 .then(function (matches) {
-//                     kmerObj.close();
-//                     let bestMatch = matches[0];
-//                     return bestMatch.get('template').should.equal('NC_017625') &&
-//                            bestMatch.get('score').should.equal(2295) &&
-//                            bestMatch.get('expected').should.equal(108) &&
-//                            bestMatch.get('z').should.equal(211.00) &&
-//                            bestMatch.get('probability').should.equal(5.03e-23) &&
-//                            bestMatch.get('frac-q').should.equal(74.14) &&
-//                            bestMatch.get('frac-d').should.equal(47.02) &&
-//                            bestMatch.get('depth').should.equal(0.36) &&
-//                            bestMatch.get('total-frac-q').should.equal(74.14) &&
-//                            bestMatch.get('total-frac-d').should.equal(47.02) &&
-//                            bestMatch.get('total-temp-cover').should.equal(0.36) &&
-//                            bestMatch.get('kmers-template').should.equal(4881) &&
-//                            bestMatch.get('species').should.equal('Escherichia coli DH1');
-//                 })
-//                 .catch(function(error) {
-//                     console.log(error);
-//                     return false;
-//                 });
-//         });
-//     });
 // });
+
+describe('kmerFinderServer findMatches test_long', function () {
+    this.timeout(500000000);
+
+    it('Winner takes All match NC_017625 (Escherichia coli DH1)', function () {
+        let kmerObj = new KmerFinderServer(
+            './test_data/test_long.fastq',
+            'ATGAC', 16, 1, 1, true, 'mongo', 'mongodb://localhost:27017/Kmers',
+            'complete_genomes_4', 'winner'
+        );
+        // let kmers = new Map([['A', 2]]);
+        return kmerObj.findKmers().then(function (kmers) {
+            return kmerObj.findMatches(kmers)
+                .then(function (matches) {
+                    kmerObj.close();
+                    let bestMatch = matches[0];
+                    console.log(bestMatch);
+                    return bestMatch.get('template').should.equal('NC_017625') &&
+                           bestMatch.get('score').should.equal(2295) &&
+                           bestMatch.get('expected').should.equal(108) &&
+                           bestMatch.get('z').should.equal(211.00) &&
+                           bestMatch.get('probability').should.equal(5.03e-23) &&
+                           bestMatch.get('frac-q').should.equal(74.14) &&
+                           bestMatch.get('frac-d').should.equal(47.02) &&
+                           bestMatch.get('depth').should.equal(0.36) &&
+                           bestMatch.get('total-frac-q').should.equal(74.14) &&
+                           bestMatch.get('total-frac-d').should.equal(47.02) &&
+                           bestMatch.get('total-temp-cover').should.equal(0.36) &&
+                           bestMatch.get('kmers-template').should.equal(4881) &&
+                           bestMatch.get('species').should.equal('Escherichia coli DH1');
+                })
+                .catch(function(error) {
+                    console.log(error);
+                    return false;
+                });
+        });
+    });
+
+    // it('Winner takes All match NC_017625 (Escherichia coli DH1)', function () {
+    //     let kmerObj = new KmerFinderServer(
+    //         './test_data/test_long.fastq',
+    //         'ATGAC', 16, 1, 1, true, 'mongo', 'mongodb://localhost:27017/Kmers',
+    //         'complete_genomes_4', 'winner'
+    //     );
+    //     let kmers = new Map([['A', 1]]);
+    //     // let json = require('.././test_data/db_short_results.json');
+    //     // return kmerObj.findKmers().then(function (kmers) {
+    //         return kmerObj.findMatches(kmers)
+    //             .then(function (matches) {
+    //                 kmerObj.close();
+    //                 let bestMatch = matches[0];
+    //                 return bestMatch.get('template').should.equal('NC_017625') &&
+    //                        bestMatch.get('score').should.equal(2295) &&
+    //                        bestMatch.get('expected').should.equal(108) &&
+    //                        bestMatch.get('z').should.equal(211.00) &&
+    //                        bestMatch.get('probability').should.equal(5.03e-23) &&
+    //                        bestMatch.get('frac-q').should.equal(74.14) &&
+    //                        bestMatch.get('frac-d').should.equal(47.02) &&
+    //                        bestMatch.get('depth').should.equal(0.36) &&
+    //                        bestMatch.get('total-frac-q').should.equal(74.14) &&
+    //                        bestMatch.get('total-frac-d').should.equal(47.02) &&
+    //                        bestMatch.get('total-temp-cover').should.equal(0.36) &&
+    //                        bestMatch.get('kmers-template').should.equal(4881) &&
+    //                        bestMatch.get('species').should.equal('Escherichia coli DH1');
+    //             })
+    //             .catch(function(error) {
+    //                 console.log(error);
+    //                 return false;
+    //             });
+    //     // });
+    // });
+    // it('Standard should match NC_017625 (Escherichia coli DH1)', function () {
+    //     let kmerObj = new KmerFinderServer(
+    //         './test_data/test_long.fastq',
+    //         'ATGAC', 16, 1, 1, true, 'mongo', 'mongodb://localhost:27017/Kmers',
+    //         'complete_genomes_4', 'standard'
+    //     );
+    //     return kmerObj.findKmers().then(function (kmers) {
+    //         return kmerObj.findMatches(kmers)
+    //             .then(function (matches) {
+    //                 kmerObj.close();
+    //                 let bestMatch = matches[0];
+    //                 return bestMatch.get('template').should.equal('NC_017625') &&
+    //                        bestMatch.get('score').should.equal(2295) &&
+    //                        bestMatch.get('expected').should.equal(108) &&
+    //                        bestMatch.get('z').should.equal(211.00) &&
+    //                        bestMatch.get('probability').should.equal(5.03e-23) &&
+    //                        bestMatch.get('frac-q').should.equal(74.14) &&
+    //                        bestMatch.get('frac-d').should.equal(47.02) &&
+    //                        bestMatch.get('depth').should.equal(0.36) &&
+    //                        bestMatch.get('total-frac-q').should.equal(74.14) &&
+    //                        bestMatch.get('total-frac-d').should.equal(47.02) &&
+    //                        bestMatch.get('total-temp-cover').should.equal(0.36) &&
+    //                        bestMatch.get('kmers-template').should.equal(4881) &&
+    //                        bestMatch.get('species').should.equal('Escherichia coli DH1');
+    //             })
+    //             .catch(function(error) {
+    //                 console.log(error);
+    //                 return false;
+    //             });
+    //     });
+    // });
+});
 //
 // TODO: FIX FASTA parser
 // describe('kmerFinderServer findMatches (4_20_6_2012_1430_975_193318_contigs)', function () {
