@@ -58,7 +58,7 @@ describe('kmerFinderServer findMatches test_long', function () {
         let kmerObj = new KmerFinderServer(
             './test_data/test_long.fastq',
             'ATGAC', 16, 1, 1, true, 'mongo', 'mongodb://localhost:27017/Kmers',
-            'complete_genomes_4', 'winner'
+            'KmerMap', 'winner'
         );
         // let kmers = new Map([['A', 2]]);
         return kmerObj.findKmers().then(function (kmers) {
@@ -83,6 +83,7 @@ describe('kmerFinderServer findMatches test_long', function () {
                 })
                 .catch(function(error) {
                     console.log(error);
+                    kmerObj.close();
                     return false;
                 });
         });
