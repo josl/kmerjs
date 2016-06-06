@@ -63,10 +63,10 @@ describe('kmerFinderServer findMatches test_long', function () {
         // let kmers = new Map([['A', 2]]);
         return kmerObj.findKmers().then(function (kmers) {
             return kmerObj.findMatches(kmers)
+                .promise
                 .then(function (matches) {
                     kmerObj.close();
                     let bestMatch = matches[0];
-                    console.log(bestMatch);
                     return bestMatch.get('template').should.equal('NC_017625') &&
                            bestMatch.get('score').should.equal(2295) &&
                            bestMatch.get('expected').should.equal(108) &&
