@@ -55,7 +55,6 @@
   "license": "Apache-2.0",
   "dependencies": {
     "bignumber.js": "^2.3.0",
-    "bluebird": "^3.4.0",
     "brfs": "^1.4.1",
     "browser-builtins": "^3.3.1",
     "browserify-fs": "^1.0.0",
