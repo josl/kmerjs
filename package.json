@@ -27,6 +27,7 @@
     "babel-core": "",
     "babel-preset-es2015": "",
     "babelify": "",
+    "benchmark": "^2.1.0",
     "chai": "^3.4.0",
     "chai-as-promised": "^5.1.0",
     "cli": "^0.11.1",
@@ -54,6 +55,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
+    "babel-core": "^6.9.1",
     "bignumber.js": "^2.3.0",
     "brfs": "^1.4.1",
     "browser-builtins": "^3.3.1",
