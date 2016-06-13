@@ -82,6 +82,10 @@ gulp.task('browser', function () {
     // Single entry point to browserify
     // Client
     // gulp babel ; browserify dist/kmers.js  -o ../kmerjsDocker/frontend/app/scripts/kmers.js -t [ babelify --presets [ es2015] ] -s kmerModule ; browserify dist/kmerFinderClient.js  -o ../kmerjsDocker/frontend/app/scripts/kmerFinderClient.js -t [ babelify --presets [ es2015] ] -s kmerModule
+    // gulp babel ; cp dist/kmers.js ../kmerjsDocker/backend/kmerjs/. ; cp dist/kmerFinderServer.js ../kmerjsDocker/backend/kmerjs/.
+
+
+
     // Server
     // gulp babel ; browserify dist/kmers.js  -o ../kmerjsDocker/backend/kmerjs/kmers.js -t [ babelify --presets [ es2015] ] -s kmerModule ; browserify dist/kmerFinderServer.js  -o ../kmerjsDocker/backend/kmerjs/kmerFinderServer.js -t [ babelify --presets [ es2015] ] -s kmerModule
 
