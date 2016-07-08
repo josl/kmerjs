@@ -13,6 +13,7 @@ var isparta = require('isparta');
 var browserify = require('gulp-browserify');
 var babelify = require("babelify");
 var fs = require('fs');
+var regenerator = require('gulp-regenerator');
 
 // Initialize the babel transpiler so ES2015 files gets compiled
 // when they're loaded
@@ -81,7 +82,8 @@ gulp.task('clean', function () {
 gulp.task('browser', function () {
     // Single entry point to browserify
     // Client
-    // gulp babel ; browserify dist/kmers.js  -o ../kmerjsDocker/frontend/app/scripts/kmers.js -t [ babelify --presets [ es2015] ] -s kmerModule ; browserify dist/kmerFinderClient.js  -o ../kmerjsDocker/frontend/app/scripts/kmerFinderClient.js -t [ babelify --presets [ es2015] ] -s kmerModule
+    // gulp babel ; browserify dist/kmers.js  -o ../kmerjsDocker/frontend/app/scripts/kmers.js -t [ babelify --presets [ es2015] ] -s kmerModule ; browserify dist/kmerFinderClient.js  -o ../kmerjsDocker/frontend/app/scripts/kmerFinderClient.js -t [ babelify --plugins [transform-regenerator] --presets [es2015] ] -s kmerModule
+    // gulp babel ; browserify dist/kmers.js  -o ../kmerjsDocker/frontend/app/scripts/kmers.js -t [ babelify --presets [ es2015] ] -s kmerModule ; browserify dist/kmerFinderClient.js  -o ../kmerjsDocker/frontend/app/scripts/kmerFinderClientA.js -t [ babelify --presets [es2015] ] -s kmerModule ; regenerator --include-runtime ../kmerjsDocker/frontend/app/scripts/kmerFinderClientA.js > ../kmerjsDocker/frontend/app/scripts/kmerFinderClient.js ; rm ../kmerjsDocker/frontend/app/scripts/kmerFinderClientA.js
     // gulp babel ; cp dist/kmers.js ../kmerjsDocker/backend/kmerjs/. ; cp dist/kmerFinderServer.js ../kmerjsDocker/backend/kmerjs/.
 
 
